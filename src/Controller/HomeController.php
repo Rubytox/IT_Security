@@ -15,7 +15,7 @@ class HomeController extends AbstractController
         $page = array(
             "title" => "IT Security"
         );
-        return $this->render('default.html.twig', [
+        return $this->render('index.html.twig', [
             "page" => $page
         ]);
     }
