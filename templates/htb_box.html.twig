@@ -1,0 +1,17 @@
+{% extends 'default.html.twig' %}
+
+{% block content %}
+<div class="col-md-12 post">
+    <br />
+    <img src="{{ asset('img/' ~ page.code ~ '/banner.png') }}" alt="Banner" class="center" />
+    <h1>{{ page.title }}</h1>
+    <h6>{{ page.author|capitalize }}, {{ page.long_date }}</h6>
+    <br />
+
+    {% block walkthrough %}
+    This is the content of the walkthrough
+    {% endblock %}
+
+    <hr />
+</div>
+{% endblock %}
