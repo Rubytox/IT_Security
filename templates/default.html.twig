@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+
+        <link rel="stylesheet" href="{{ asset('style/default_style.css') }}" />
+        <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('img/icons/apple2.png') }}">
+
+        <title>{{ page.title }}</title>
+    </head>
+
+    <body>
+        <div class="jumbotron text-center" style="margin-bottom:0">
+            <div class="container">
+                <h1><a href="/" style="text-decoration: none; color:white" id="head-title" class="tengwar">IT Security</a> <br /><small class="tengwar">Security, challenges and boxes</small></h1>
+            </div>
+        </div>
+
+        {{ render(controller(
+            'App\\Controller\\NavController::nav'
+        )) }}
+
+        {#
+        {{ content }}
+        #}
+
+        <p class="text-center" style="padding-top: 20px; padding-bottom: 10px">Copyright © 2020-2021 Rubytox</p>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script>
+
+            var get = [];
+            location.search.replace('?', '').split('&').forEach(function (val) {
+                split = val.split("=", 2);
+                get[split[0]] = split[1];
+            });
+            let darkModeDefined = sessionStorage.getItem("darkModeVar");
+            if (darkModeDefined == null) {
+                let dt = new Date();
+                let hours = dt.getHours();
+                if (8 <= hours && hours <= 18) {
+                    sessionStorage.setItem("darkModeVar", "false");
+                }
+                else {
+                    sessionStorage.setItem("darkModeVar", "true");
+                }
+            }
+
+            let darkMode = sessionStorage.getItem("darkModeVar");
+            if (darkMode !== "true") {
+                $('body, .jumbotron').css('background-color', 'white');
+                $('body, .jumbotron').css('color', 'black');
+                $('#head-title').css('color', 'black');
+                $('#darkmode-btn').text("Dark mode");
+                $('#darkmode-btn').removeClass("btn-light").addClass("btn-secondary");
+            }
+            else {
+                $('body, .jumbotron').css('background-color', '#1e2125');
+                $('body, .jumbotron').css('color', '#949ba2');
+                $('#head-title').css('color', 'white');
+                $('#darkmode-btn').text("Light mode");
+                $('#darkmode-btn').removeClass("btn-secondary").addClass("btn-light");
+            }
+
+            if (get['elvish'] != null) {
+                $('body, .jumbotron').css('font-family', '"Tengwar Annatar alt", serif');
+            }
+            else {
+                $('body').css('font-family', 'sans-serif');
+                $('.jumbotron').css('font-family', '"Hacked", "sans-serif"');
+            }
+
+
+            $('#navbarDropdownMenuLink').mouseover(function() {
+                $(this).dropdown('toggle');
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            function toggleDarkMode() {
+                if (darkMode === "true") {
+                    $('body, .jumbotron').css('background-color', 'white');
+                    $('body, .jumbotron').css('color', 'black');
+                    $('#head-title').css('color', 'black');
+                    $('#darkmode-btn').text("Dark mode");
+                    $('#darkmode-btn').removeClass("btn-light").addClass("btn-secondary");
+                    darkMode = "false";
+                }
+                else {
+                    $('body, .jumbotron').css('background-color', '#1e2125');
+                    $('body, .jumbotron').css('color', '#949ba2');
+                    $('#head-title').css('color', 'white');
+                    $('#darkmode-btn').text("Light mode");
+                    $('#darkmode-btn').removeClass("btn-secondary").addClass("btn-light");
+                    darkMode = "true";
+                }
+                sessionStorage.setItem("darkModeVar", darkMode);
+            }
+
+            function nextChar(c) {
+                return String.fromCharCode(c.charCodeAt(0) + 1);
+            }
+
+            $(document).ready(function() {
+                $('a').click(function(event) {
+                    if (get['elvish'] != null) {
+                        // Stop the link from redirecting
+                        event.preventDefault();
+
+                        // Redirect instead with JavaScript
+                        window.location.href = $(this).attr('href') + '?elvish=' + get['elvish'];
+                    }
+                });
+            });
+
+            $(".evil-winrm-prefix").html("<span style='color: red;'>*Evil-WinRM*</span> <span style='color: yellow; font-weight: bold'>PS</span>");
+        </script>
+    </body>
+</html>

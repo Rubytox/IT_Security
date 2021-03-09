@@ -1,0 +1,208 @@
+body, .jumbotron {
+    /*background-color: #333333; */
+    /*
+    background-color: #1e2125;
+    color: #949ba2;
+     */
+}
+
+@font-face {
+    font-family: "Hacked";
+    src: url("/style/fonts/hacked/hacked.ttf");
+    src: url("/style/fonts/hacked/hacked.woff") format("woff"),
+    url("/style/fonts/hacked/hacked.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Tengwar Annatar";
+    src: url("/style/fonts/tengwar_annatar/tngan.ttf");
+}
+
+@font-face {
+    font-family: "Tengwar Annatar alt";
+    src: url("/style/fonts/tengwar_annatar/TengwarAnnatar-RpaW.ttf");
+}
+
+@font-face {
+    font-family: "Tengwar Annatar";
+    src: url("/style/fonts/tengwar_annatar/tnganb.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Tengwar Annatar";
+    src: url("/style/fonts/tengwar_annatar/tngani.ttf");
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: "Tengwar Annatar";
+    src: url("/style/fonts/tengwar_annatar/tngan.ttf");
+    font-weight: bold;
+    font-style: italic, oblique;
+}
+
+@font-face {
+    font-family: "Tengwar Feanor";
+    src: url("/style/fonts/tengwar_feanor/tengwarfeanorregular.ttf");
+}
+
+@font-face {
+    font-family: "Stay Classy";
+    src: url("/style/fonts/stay_classy/Stay_classy.ttf");
+    src: url("/style/fonts/stay_classy/Stay_classy.otf") format("opentype");
+}
+
+
+.jumbotron {
+    /* font-family: "Hacked", serif; */
+    font-family: "Tengwar Feanor", serif;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+}
+
+#head-title {
+    font-size: 130%;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 50%; */
+}
+
+hr {
+    border-color: #949ba2;
+}
+
+.prettyprint {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+/* It means a prettyprint followed by linenums ? */
+.prettyprint.linenums {
+    padding-left: 10px;
+}
+
+.linenums li {
+    list-style-type: decimal;
+}
+
+.post {
+    margin: auto;
+    width: 80%
+}
+
+.nocode {
+    color: white;
+}
+
+.post img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+    max-width: 1000px;
+    max-height: 1000px;
+    width: auto;
+    height: auto;
+}
+
+.post figcaption {
+    text-align: center;
+    font-style: italic;
+}
+
+.custom-post-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.highlighted {
+    background-color: gray;
+}
+
+.profile {
+    display: inline-block;
+    float:left;
+    padding-right: 10px;
+    border-radius: 50%;
+    margin-bottom: -9px;
+}
+
+.progress {
+    font-size: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.progress-list {
+    padding: 0;
+}
+
+.progress-list img {
+    max-width: 380px;
+    max-height: 380px;
+}
+
+@media screen and (max-width: 580px) {
+    .center {
+        width: 50%;
+    }
+    .post {
+        width: 100%;
+    }
+
+    .progress-list img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 5px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.password {
+    color: #6D071A;
+    font-weight: bold;
+}
+
+iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+.pub-name {
+    font-weight: bold;
+}
+
+.pub-authors {
+}
+
+.pub-date {
+    font-style: italic;
+}
+
+.publications {
+    line-height: 1.4;
+}
+
+.pub-link img {
+    display: inline;
+    height: 1.6em;
+    vertical-align: text-top;
+}
